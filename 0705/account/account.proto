@@ -1,0 +1,28 @@
+syntax = "proto3";
+package account;
+
+enum Sex {
+  SEX_UNSPECIFIED = 0;
+  SEX_MALE = 1;
+  SEX_FEMALE = 2;
+}
+
+option go_package = "api/account;account";
+
+message CreateUserRequest {
+  string phone = 1;
+  string username = 2;
+  Sex sex = 3;
+}
+
+message CreateUserResponse {
+
+}
+
+service AccountService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
+  }
+
+  rpc GetUser(CreateUserRequest) returns (CreateUserResponse) {
+  }
+}

@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package article.protocol;
+
+option go_package = "./protocol";
+
+message PostArticleRequest {
+  uint32 article_id = 1;
+  //obs link
+  string content_link = 2;
+  uint64 uid = 3;
+}
+
+message PostArticleResponse {
+
+}
+
+message VoteArticleRequest {
+  uint32 article_id = 1;
+  uint64 voter_id = 2;
+}
+
+message VoteArticleResponse {
+
+}
+message GetArticlesRequest {
+
+}
+
+message GetArticlesResponse {
+
+}
+
+service ArticleService {
+  rpc PostArticle(PostArticleRequest) returns (PostArticleResponse){};
+  rpc VoteArticle(VoteArticleRequest) returns (VoteArticleResponse){};
+  rpc GetArticles(GetArticlesRequest) returns (GetArticlesResponse){};
+}
