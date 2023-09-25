@@ -42,6 +42,10 @@ func (p *Proposer) propose(v interface{}) interface{} {
 				v = reply.Value
 			}
 		}
+
+		if prepareCount == p.majority() {
+			break
+		}
 	}
 
 	acceptCount := 0

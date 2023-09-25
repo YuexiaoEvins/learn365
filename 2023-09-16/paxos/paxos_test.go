@@ -28,9 +28,9 @@ func cleanup(acceptors []*Acceptor, learners []*Learner) {
 }
 
 func TestSingleProposer(t *testing.T) {
-	acceptorIds := []int{1001, 1002, 1003}
+	acceptorIds := []int{10001, 10002, 10003}
 
-	learnerIds := []int{2001}
+	learnerIds := []int{20001}
 	acceptors, learns := start(acceptorIds, learnerIds)
 
 	defer cleanup(acceptors, learns)
@@ -41,6 +41,7 @@ func TestSingleProposer(t *testing.T) {
 	}
 
 	value := p.propose("hello world")
+	t.Logf("value:%+v", value)
 	if value != "hello world" {
 		t.Errorf("value = %s excepted %s", value, "hello world")
 	}
@@ -74,6 +75,7 @@ func TestTwoProposers(t *testing.T) {
 		acceptors: acceptorIds,
 	}
 	v2 := p2.propose("hello book")
+	t.Logf("v1:%s v2:%s", v1, v2)
 
 	if v1 != v2 {
 		t.Errorf("value1 = %s, value2 = %s", v1, v2)

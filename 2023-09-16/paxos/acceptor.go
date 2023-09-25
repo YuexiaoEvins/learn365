@@ -51,6 +51,7 @@ func (a *Acceptor) close() {
 }
 
 func (a *Acceptor) Prepare(args *MsgArgs, reply *MsgReply) error {
+	fmt.Printf("args:%+v\n", args)
 	if args.Number > a.minProposal {
 		a.minProposal = args.Number
 		reply.Number = a.acceptedNumber
